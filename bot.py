@@ -2,6 +2,7 @@ import sys
 import os
 from telegram.ext import Application, CommandHandler
 from modules.start import start
+from modules.poll import poll
 
 def read_token():
     try:
@@ -23,6 +24,7 @@ def main():
     app = Application.builder().token(TOKEN).job_queue(None).build()
 
     app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("poll", poll))
 
     app.run_polling()
 
