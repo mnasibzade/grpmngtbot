@@ -2,7 +2,7 @@ import sys
 import os
 from telegram.ext import Application, CommandHandler
 from modules.start import start
-from modules.poll import poll
+from modules.poll import createpoll
 
 def read_token():
     try:
