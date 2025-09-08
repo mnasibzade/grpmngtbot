@@ -1,12 +1,15 @@
 from telegram import Update
 from telegram.ext import CommandHandler, ContextTypes
 
-async def createpoll(update: Update, ContextTypes.DEFAULT_TYPE):
-    if len(context.args) <3:
-        await update.message.reply_text("Usage: /poll <question> | <variant1> | <variant2> |....")
-        return  
+async def createpoll(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    if len(context.args) < 3:
+        await update.message.reply_text("Usage: /poll <question> | <variant1> | <variant2> | ...")
+        return
+
     text = " ".join(context.args)
     parts = text.split("|")
+    question = parts[0].strip()
+    options = [opt.strip() for opt in parts[1:]]
 
     keyboard = [
     [
@@ -29,3 +32,4 @@ async def createpoll(update: Update, ContextTypes.DEFAULT_TYPE):
         options=options,
         is 
     )
+
